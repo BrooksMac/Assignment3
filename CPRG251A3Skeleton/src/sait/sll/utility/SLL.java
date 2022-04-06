@@ -131,7 +131,7 @@ public class SLL implements LinkedListADT{
 
     @Override
     public void delete(int index) throws IndexOutOfBoundsException {
-    	//i findex is out of range return null, if the index is 0 remove head, if the index is size -1, remove tail. Else check index
+    	//if index is out of range return null, if the index is 0 remove head, if the index is size -1, remove tail. Else check index
     	if (index < 0 || index >= size) {
     		return null;
     	}
@@ -162,28 +162,19 @@ public class SLL implements LinkedListADT{
     }
     
 
-//		
-//    @Override
-//    public int indexOf(Object data) {
-//    	Node currentNode = head;
-//    	while (current != null) {
-//    		data.indexOf(data);
-//    		return indexOf(data);
-//    	} else {
-//        return 0; 
-//    }
-//    }
-    
     @Override
     public int indexOf(Object data) {
     	Node current = head;
-    	//find the index of the list data that contains data and return it
+    	//while the current doesnt equal null, find the node where it first isn't null and return it 
     	while (current != null) {
-    		if(current == null)
+    		if(current == null) {
     		return -1;
     	} else {
+    		current = current.getNext();
+    	}
+    	}
         return index;
-    }
+    
     }
 
     @Override
