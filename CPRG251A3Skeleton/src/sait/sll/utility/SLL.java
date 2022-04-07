@@ -140,17 +140,60 @@ public class SLL implements LinkedListADT{
 
     @Override
     public Object retrieve(int index) throws IndexOutOfBoundsException {
-        return null;
-    }
+    	Node current = head;
+    	//get size of LL
+    	int size = size();
+    	
+    	if (current != null) {
+    		//go through the nodes if the iterator doesn't find a null value 
+    	for (int i = 0; i < size; i++) {
+    		current = current.getNext();
+    		//set the iterator to the next value 
+    	}
+    	// return data at the node with value 
+    	return current.getElement();
+    	}
+    	//otherwise return null if current = null
+    	else {
+    	return null; 
+    	}
+    	}
+    
 
     @Override
     public int indexOf(Object data) {
-        return 0;
+    	int count = 0;
+    	
+    	Node current = head;
+    	//while the current doesn't equal null, find the node where it first isn't null and return it 
+    	while (current != null) {
+    		if(current.getElement().equals(data)) {
+    			//return the count the data element is at
+    		return count;
+    		} else { 
+    		//otherwise move to next node and up the count
+    		current = current.getNext();
+    		count++;
+    		}          	
+    	}
+    	//if it doesn't return the count, return -1 
+		return -1;
     }
+    
 
     @Override
     public boolean contains(Object data) {
-        return false;
+    	Node current = head;
+        // since there is element in the head check if the next node has data too
+        while(current != null) {
+        	if(current.getElement().equals(data)) {
+        	return true;
+        } else {
+        //go to the next node, update current node
+        current = current.getNext();
+         }
+        }
+       return false; 
     }
 
 
