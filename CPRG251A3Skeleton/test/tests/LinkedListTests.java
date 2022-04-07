@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
-import sait.sll.utility.*;
+import sait.sll.utility.LinkedListADT;
 
 
 /**
@@ -18,7 +18,7 @@ class LinkedListTests {
 	 * Contains the linked list that is manipulated in each test.
 	 */
 	private LinkedListADT linkedList;
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -251,4 +251,28 @@ class LinkedListTests {
 		String value = (String) this.linkedList.retrieve(1);
 		assertEquals("b", value);
 	}
+
+	/**
+	* Tests the size of the linked list.
+	*/
+	@Test
+	void testSize() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		this.linkedList.append("d");
+
+		/**
+		 * Linked list should now be:
+		 *
+		 * a -> b -> c -> d
+		 */
+
+		int actualSize = this.linkedList.size();
+		int expectedSize = 4;
+
+		assertEquals(expectedSize, actualSize);
+	}
+
+
 }

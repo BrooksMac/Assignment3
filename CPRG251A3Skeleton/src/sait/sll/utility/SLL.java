@@ -1,6 +1,5 @@
 package sait.sll.utility;
 
-import org.w3c.dom.Node;
 
 import sait.sll.problemdomain.User;
 
@@ -131,64 +130,26 @@ public class SLL implements LinkedListADT{
 
     @Override
     public void delete(int index) throws IndexOutOfBoundsException {
-    	//if index is out of range return null, if the index is 0 remove head, if the index is size -1, remove tail. Else check index
-    	if (index < 0 || index >= size) {
-    		return null;
-    	}
-    	else if (index == 0) {
-    		return removeFirst();
-    	}
-    	else if (index == size -1) {
-    		return removeLast();
-    	}
-    	// for loop locates previous and puts iterator before node to be deleted
-    	else {
-    		Node<user> previous == head;
-    		for delete(i = 1; i < index; i++) {
-    			previous = previous.next;
-    		}
-    		//statement locates .current that points to the node to be deleted 
-    		Node<user> currentNode = previous.next;
-    		//links previous to current to delete the node pointed to by current
-    		previous.next = current.next;
-    		size--;
-    		return current.element;		
-    	}
+
     }
 
     @Override
     public Object retrieve(int index) throws IndexOutOfBoundsException {
-   return null; 
+        return null;
     }
-    
 
     @Override
     public int indexOf(Object data) {
-    	Node current = head;
-    	//while the current doesnt equal null, find the node where it first isn't null and return it 
-    	while (current != null) {
-    		if(current == null) {
-    		return -1;
-    	} else {
-    		current = current.getNext();
-    	}
-    	}
-        return index;
-    
+        return 0;
     }
 
     @Override
     public boolean contains(Object data) {
-    	Node current = head;
-        // since there is element in the head check if the next node has data too
-        while(current != null) {
-        	if(current.data.equals(data)) {
-        	return true;
-        } else {
-        //go to the next node, update current node
-        current = current.getNext();
-         }
-        }
-       return false; 
+        return false;
     }
+
+
+
+
+
 }

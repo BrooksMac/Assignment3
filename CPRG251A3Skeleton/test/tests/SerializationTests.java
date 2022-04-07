@@ -54,7 +54,7 @@ class SerializationTests {
 	@Test
 	void testSerialize() throws IOException {
 		this.oos.writeObject(this.users);
-		
+
 		assertTrue(this.baos.size() > 0);
 	}
 
