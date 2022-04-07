@@ -25,7 +25,7 @@ class LinkedListTests {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		// Create your concrete linked list class and assign to to linkedList.
+		// Create your concrete linked list class and assign it to linkedList.
 		this.linkedList = new SLL();
 	}
 
@@ -276,7 +276,7 @@ class LinkedListTests {
 	}
 
 	/**
-	 * Tests to see if the first Node is being targetted succesfully
+	 * Tests to see if the first Node is being targeted successfully
 	 */
 	@Test
 	void testStartNodeBeforeAppending() {
@@ -297,6 +297,13 @@ class LinkedListTests {
 	}
 
 	void testInsertOutOfBounds() {
+		int outOfBoundsIndex = 5;
+		//Throws when the LinkedList is empty
+		assertThrows(IndexOutOfBoundsException.class, ()->{
+			this.linkedList.insert("data", outOfBoundsIndex);
+		});
+
+
 		this.linkedList.append("a");
 		this.linkedList.append("b");
 		this.linkedList.append("c");
@@ -308,6 +315,69 @@ class LinkedListTests {
 		 * a -> b -> c -> d
 		 */
 
+		//Throws when there is a LinkedList but the index is too high
+		assertThrows(IndexOutOfBoundsException.class, ()->{
+			this.linkedList.insert("data", outOfBoundsIndex);
+		});
+	}
 
+	@Test
+	void testNodeAtStart() {
+		int outOfBoundsIndex = 0;
+		//Throws when the LinkedList is empty
+		assertThrows(IndexOutOfBoundsException.class, ()->{
+			this.linkedList.insert("data", outOfBoundsIndex);
+		});
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		this.linkedList.append("d");
+
+		/**
+		 * Linked list should now be:
+		 *
+		 * a -> b -> c -> d
+		 */
+
+		String expectedElement = "a";
+		String actualElement = (String) linkedList.retrieve(0);
+
+		assertEquals(expectedElement, actualElement);
+	}
+
+	@Test
+	void testDeleteNodeFromStart() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		this.linkedList.append("d");
+
+		/**
+		 * Linked list should now be:
+		 *
+		 * a -> b -> c -> d
+		 */
+
+		this.linkedList.delete(0);
+
+		// Test the linked list is not empty.
+		assertFalse(this.linkedList.isEmpty());
+
+		// Test the size is 3
+		assertEquals(3, this.linkedList.size());
+
+		// Test the first node value is a
+		assertEquals("b", this.linkedList.retrieve(0));
+
+		// Test the second node value is b
+		assertEquals("c", this.linkedList.retrieve(1));
+
+		// Test the third node value is d
+		assertEquals("d", this.linkedList.retrieve(2));
+
+		// Test the fourth node value does not exist
+		assertThrows(IndexOutOfBoundsException.class, ()->{
+			this.linkedList.insert("data", 3);
+		});
 	}
 }
