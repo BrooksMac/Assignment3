@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 import sait.sll.utility.LinkedListADT;
+import sait.sll.utility.SLL;
 
 
 /**
@@ -25,7 +26,7 @@ class LinkedListTests {
 	@BeforeEach
 	void setUp() throws Exception {
 		// Create your concrete linked list class and assign to to linkedList.
-		//this.linkedList = new SLL();
+		this.linkedList = new SLL();
 	}
 
 	/**
@@ -274,5 +275,39 @@ class LinkedListTests {
 		assertEquals(expectedSize, actualSize);
 	}
 
+	/**
+	 * Tests to see if the first Node is being targetted succesfully
+	 */
+	@Test
+	void testStartNodeBeforeAppending() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		this.linkedList.append("d");
 
+		/**
+		 * Linked list should now be:
+		 *
+		 * a -> b -> c -> d
+		 */
+
+		String actualElement = (String)this.linkedList.retrieve(0);
+		String expectedElement = "a";
+		assertEquals(expectedElement, actualElement);
+	}
+
+	void testInsertOutOfBounds() {
+		this.linkedList.append("a");
+		this.linkedList.append("b");
+		this.linkedList.append("c");
+		this.linkedList.append("d");
+
+		/**
+		 * Linked list should now be:
+		 *
+		 * a -> b -> c -> d
+		 */
+
+
+	}
 }
