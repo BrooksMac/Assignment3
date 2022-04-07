@@ -45,7 +45,7 @@ public class SLL implements LinkedListADT{
         return (head == null);
     }
 
-    //cut the head of the snake to clear the list, if there is no head there shouldn't be a tail either, set size to 0
+    //cut the head off the snake to clear the list, if there is no head there shouldn't be a tail either, set size to 0
     @Override
     public void clear() {
         head = null;
@@ -57,28 +57,33 @@ public class SLL implements LinkedListADT{
     //Else create a new Node with data and set it to be tail.next, then make tail = it.
     @Override
     public void append(Object data) {
+        Node newNode = new Node(data);
         if(isEmpty()){
-            head = new Node(data);
-            tail = new Node(data);
+            head = tail = newNode;
         }else{
-            tail.setNext(new Node(data));
-            tail = tail.getNext();
+            Node current = head;
+            while(current.getNext()!=null) {
+                current = current.getNext();
+            }
+            current.setNext(newNode);
         }
         size++;
     }
 
+    //If this is the first Node being added to the LinkedList make both the head and tail point to it
+    //Else create a new Node with data and set it's next to be the head (is now the 2nd Node), then set head = the newly created Node
     @Override
     public void prepend(Object data) {
+        Node newNode = new Node(data);
         if(isEmpty()){
-            head = new Node(data);
-            tail = new Node(data);
+            head = tail = newNode;
         }else{
-            Node temp = new Node(head);
-            head = new Node(data);
-            head.setNext(temp);
+            newNode.setNext(head);
+            head = newNode;
         }
         size++;
     }
+
 
     @Override
     public void insert(Object data, int index) throws IndexOutOfBoundsException {

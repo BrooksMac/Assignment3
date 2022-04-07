@@ -4,14 +4,8 @@ public class Node {
     private Object element;
     private Node next;
 
-    public Node(Object element, Node next){
-        this.element = element;
-        this.next = next;
-    }
-
     public Node(Object element){
         this.element = element;
-        this.next=null;
     }
 
     public Object getElement() {
@@ -23,7 +17,7 @@ public class Node {
     }
 
     public Node getNext() {
-        return next;
+        return this.next;
     }
 
     public void setNext(Node next) {

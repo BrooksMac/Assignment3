@@ -380,4 +380,6 @@ class LinkedListTests {
 			this.linkedList.insert("data", 3);
 		});
 	}
+
+
 }
